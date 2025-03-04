@@ -37,7 +37,7 @@ export default function StringInput(props: ConfigurableInputProps) {
 
   useEffect(() => {
     if (props.code !== "TBAeventID") return;
-    fetch("./config/teams.json")
+    fetch("./public/teams.json")
       .then(response => response.json())
       .then(json => setValue(json["event_id"]));
   }, [value]);
