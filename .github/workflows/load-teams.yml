@@ -13,8 +13,6 @@ jobs:
         steps:
             - name: "[1/x] Checkout Repository"
               uses: actions/checkout@v4
-              env:
-                  GITHUB_TOKEN: ${{ secrets.PAT }}
             - name: "[2/x] Set up Node.js"
               uses: actions/setup-node@v4
               with:
@@ -24,11 +22,11 @@ jobs:
             - name: "[4/x] Run TS"
               run: npm run fill-teams -- ${{ inputs.match_tba_id }} ${{ secrets.TBA_AUTH_KEY }}
             - name: "[5/x] Commit and Push"
-              env:
-                  GITHUB_TOKEN: ${{ secrets.PAT }}
               run: |
                 git config --global user.name "sponge2"
                 git config --global user.email "g.stuk@outlook.com"
                 git add public/teams.json
                 git commit -m "Loaded Match Data from ${{ inputs.match_tba_id }}"
                 git push
+            - name: "[6/x] Deploy"
+              uses: ./.github/workflows/deploy.yml
