@@ -46,8 +46,8 @@ jobs:
                 git add public/teams.json
                 git commit -m "Loaded Match Data from ${{ inputs.match_tba_id }}"
                 git push
-                - name: Build
-                run: npm run build
+            - name: Build (Deploy)
+              run: npm run build
             - name: Setup Pages (Deploy)
               uses: actions/configure-pages@v3
             - name: Upload artifact
