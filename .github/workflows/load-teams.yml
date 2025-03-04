@@ -7,27 +7,54 @@ on:
                 description: "Event ID (in the tba url; ex. 2025alhu for 2025 Rocket City)"
                 required: true
 
+# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+  
+env:
+  VITE_STATSIG_CLIENT_KEY: client-FccOCTznRdYyGr7cx3vJoyoWyO1BTqBzv6S2g1lYPvB
+
 jobs:
     fill-teams:
+        environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }}
         runs-on: ubuntu-latest
         steps:
-            - name: "[1/x] Checkout Repository"
+            - name: "[1/5] Checkout Repository"
               uses: actions/checkout@v4
-            - name: "[2/x] Set up Node.js"
+            - name: "[2/5] Set up Node.js"
               uses: actions/setup-node@v4
               with:
                 node-version: 'latest'
-            - name: "[3/x] Install dependencies"
+                cache: 'npm'
+            - name: "[3/5] Install dependencies"
               run: npm i
-            - name: "[4/x] Run TS"
+            - name: "[4/5] Run TS"
               run: npm run fill-teams -- ${{ inputs.match_tba_id }} ${{ secrets.TBA_AUTH_KEY }}
-            - name: "[5/x] Commit and Push"
+            - name: "[5/5] Commit and Push"
               run: |
                 git config --global user.name "sponge2"
                 git config --global user.email "g.stuk@outlook.com"
                 git add public/teams.json
                 git commit -m "Loaded Match Data from ${{ inputs.match_tba_id }}"
                 git push
-    deploy:
-      needs: fill-teams
-      uses: ./.github/workflows/deploy.yml
+                - name: Build
+                run: npm run build
+            - name: Setup Pages (Deploy)
+              uses: actions/configure-pages@v3
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                # Upload dist repository
+                path: './dist'
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
