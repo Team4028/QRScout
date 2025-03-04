@@ -10,7 +10,8 @@ on:
 jobs:
     fill-teams:
         runs-on: ubuntu-latest
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         steps:
             - name: "[1/x] Checkout Repository"
               uses: actions/checkout@v4
