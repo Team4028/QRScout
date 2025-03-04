@@ -4,7 +4,6 @@ import React, { useCallback, useEffect } from 'react';
 import { Input } from '../ui/input';
 import { NumberInputData } from './BaseInputProps';
 import { ConfigurableInputProps } from './ConfigurableInput';
-import { error } from 'console';
 
 export default function NumberInput(props: ConfigurableInputProps) {
   const data = useQRScoutState(
