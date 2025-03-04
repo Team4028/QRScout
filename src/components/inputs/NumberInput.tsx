@@ -60,6 +60,14 @@ export default function NumberInput(props: ConfigurableInputProps) {
         `force: ${force}`,
         `behavior: ${data.formResetBehavior}`,
       );
+      if (props.code === "teamNumber") {
+        fetch('./teams.json')
+          .then(res => res.json())
+          .then(json => {
+            setValue(json.matches?.[1]?.["red"]?.[1])
+          })
+      }
+
       if (force) {
         setValue(data.defaultValue);
         return;
@@ -103,7 +111,6 @@ export default function NumberInput(props: ConfigurableInputProps) {
         return;
       }
       setValue(parsed);
-      console.log(props.code)
       if (props.code === "matchNumber") {
         window.dispatchEvent(new CustomEvent('matchNumUpdate', {detail: {match: parsed}}))
         console.log("weeee")
