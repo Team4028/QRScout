@@ -41,8 +41,8 @@ jobs:
               run: npm run fill-teams -- ${{ inputs.match_tba_id }} ${{ secrets.TBA_AUTH_KEY }}
             - name: "[5/5] Commit and Push"
               run: |
-                git config --global user.name "sponge2"
-                git config --global user.email "g.stuk@outlook.com"
+                git config --global user.name "github-actions[bot]"
+                git config --global user.email "github-actions[bot]@users.noreply.github.com"
                 git add public/teams.json
                 git commit -m "Loaded Match Data from ${{ inputs.match_tba_id }}"
                 git push
