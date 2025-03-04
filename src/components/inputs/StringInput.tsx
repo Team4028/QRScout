@@ -35,6 +35,13 @@ export default function StringInput(props: ConfigurableInputProps) {
     [data.defaultValue],
   );
 
+  useEffect(() => {
+    if (props.code !== "TBAeventID") return;
+    fetch("./teams.json")
+      .then(response => response.json())
+      .then(json => setValue(json["event_id"]));
+  }, [value]);
+
   useEvent('resetFields', resetState);
 
   useEffect(() => {

@@ -1,0 +1,31 @@
+name: Load Teams From TBA
+
+on:
+    workflow_dispatch:
+        inputs:
+            match_tba_id:
+                description: "Event ID (in the tba url; ex. 2025alhu for 2025 Rocket City)"
+                required: true
+
+jobs:
+    fill-teams:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: "[1/x] Checkout Repository"
+              uses: actions/checkout@v4
+            - name: "[2/x] Set up Node.js"
+              uses: actions/setup-node@v4
+              with:
+                node-version: 'latest'
+            - name: "[3/x] Install dependencies"
+              run: npm i
+            - name: "[4/x] Run TS"
+              run: npm run fill-teams -- ${{ inputs.match_tba_id }} ${{ secrets.TBA_AUTH_KEY }}
+            - name: "[5/x] Commit and Push"
+              run:
+                git config --global user.name "github-actions[bot]"
+                git config --global user.email "github-actions[bot]@users.noreply.github.com"
+                git add teams.json
+                git commit -m "Loaded Match Data from ${{ inputs.match_tba_id }}"
+                git push

@@ -4,6 +4,7 @@ import React, { useCallback, useEffect } from 'react';
 import { Input } from '../ui/input';
 import { NumberInputData } from './BaseInputProps';
 import { ConfigurableInputProps } from './ConfigurableInput';
+import { error } from 'console';
 
 export default function NumberInput(props: ConfigurableInputProps) {
   const data = useQRScoutState(
@@ -15,6 +16,43 @@ export default function NumberInput(props: ConfigurableInputProps) {
   }
 
   const [value, setValue] = React.useState<number | ''>(data.defaultValue);
+  const [matchNumber, setMatchNumber] = React.useState<number | null>(1);
+  const [robotColorNum, setRobotColorNum] = React.useState<string | null>("R1");
+
+  useEffect(() => {
+    if (props.code === "teamNumber" && matchNumber !== null && robotColorNum !== null) {
+      fetch('./teams.json')
+        .then(response => response.json())
+        .then(json => {
+          const sanitizeALittleBit = robotColorNum.toLowerCase();
+          const color = (sanitizeALittleBit.includes("r") ? "red" : "blue")
+          const number = (sanitizeALittleBit.includes("1") ? 1 : (sanitizeALittleBit.includes("2") ? 2 : 3))
+          const team = json.matches?.[matchNumber]?.[color]?.[number] || 0;
+          setValue(team)
+        })
+        .catch(error => console.error('Error loading team data: ', error))
+    }
+  }, [props.code, matchNumber, robotColorNum]);
+
+  useEffect(() => {
+    const handleMatchUpdate = (event: CustomEvent<{match: number}>) => {
+      console.log("match updated to " + event.detail.match);
+      setMatchNumber(event.detail.match)
+    };
+
+    const handleRobotColorNumUpdate = (event: CustomEvent<{cNum: string}>) => {
+      console.log("rcnum updated to " + event.detail.cNum);
+      setRobotColorNum(event.detail.cNum);
+    };
+
+    window.addEventListener('matchNumUpdate', handleMatchUpdate as EventListener);
+    window.addEventListener('robotColorNumUpdate', handleRobotColorNumUpdate as EventListener);
+
+    return () => {
+      window.removeEventListener('matchNumUpdate', handleMatchUpdate as EventListener);
+      window.removeEventListener('robotColorNumUpdate', handleRobotColorNumUpdate as EventListener);
+    }
+  }, []);
 
   const resetState = useCallback(
     ({ force }: { force: boolean }) => {
@@ -66,6 +104,11 @@ export default function NumberInput(props: ConfigurableInputProps) {
         return;
       }
       setValue(parsed);
+      console.log(props.code)
+      if (props.code === "matchNumber") {
+        window.dispatchEvent(new CustomEvent('matchNumUpdate', {detail: {match: parsed}}))
+        console.log("weeee")
+      }
       e.preventDefault();
     },
     [data],
