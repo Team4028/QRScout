@@ -27,8 +27,8 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.PAT }}
               run: |
-                git config --global user.name "bot1"
-                git config --global user.email "tbabot@beaksquad.dev"
+                git config --global user.name "sponge2"
+                git config --global user.email "g.stuk@outlook.com"
                 git add public/teams.json
                 git commit -m "Loaded Match Data from ${{ inputs.match_tba_id }}"
-                git push https://x-access-token:${{ secrets.PAT }}@github.com/team4028/QRScout.git
+                git push
