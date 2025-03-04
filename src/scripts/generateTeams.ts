@@ -30,7 +30,7 @@ fetch(url, options)
         }
 
         const jsonData = JSON.stringify({event_id: eventId, matches}, null, 4);
-        const outputPath = path.join(process.cwd(), 'teams.json');
+        const outputPath = path.join(process.cwd(), 'config/teams.json');
         fs.writeFileSync(outputPath, jsonData, 'utf-8');
         console.log(`✅ Read matches from ${eventId} (${url}) into: ${outputPath}`);
     });

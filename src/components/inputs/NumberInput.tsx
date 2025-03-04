@@ -20,7 +20,7 @@ export default function NumberInput(props: ConfigurableInputProps) {
 
   useEffect(() => {
     if (props.code === "teamNumber" && matchNumber !== null && robotColorNum !== null) {
-      fetch('./teams.json')
+      fetch('./config/teams.json')
         .then(response => response.json())
         .then(json => {
           const sanitizeALittleBit = robotColorNum.toLowerCase();
