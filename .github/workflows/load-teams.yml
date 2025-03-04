@@ -29,4 +29,5 @@ jobs:
                 git commit -m "Loaded Match Data from ${{ inputs.match_tba_id }}"
                 git push
     deploy:
+      needs: fill-teams
       uses: ./.github/workflows/deploy.yml
