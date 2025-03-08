@@ -88,7 +88,7 @@ export default function NumberInput(props: ConfigurableInputProps) {
         case 'increment':
           setValue(prev => (typeof prev === 'number' ? prev + 1 : 1));
           if (props.code === "matchNumber") {
-            window.dispatchEvent(new CustomEvent('matchNumUpdate', {detail: {match: prev + 1}}))
+            window.dispatchEvent(new CustomEvent('matchNumUpdate', {detail: {match: value}}))
             console.log("weeee")
           }
           return;
