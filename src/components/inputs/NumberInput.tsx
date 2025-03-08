@@ -60,12 +60,17 @@ export default function NumberInput(props: ConfigurableInputProps) {
         `force: ${force}`,
         `behavior: ${data.formResetBehavior}`,
       );
-      if (props.code === "teamNumber") {
+      if (props.code === "teamNumber" && matchNumber !== null && robotColorNum !== null) {
         fetch('./teams.json')
-          .then(res => res.json())
+          .then(response => response.json())
           .then(json => {
-            setValue(json.matches?.[1]?.["red"]?.[1])
+            const sanitizeALittleBit = robotColorNum.toLowerCase();
+            const color = (sanitizeALittleBit.includes("r") ? "red" : "blue")
+            const number = (sanitizeALittleBit.includes("1") ? 1 : (sanitizeALittleBit.includes("2") ? 2 : 3))
+            const team = json.matches?.[matchNumber]?.[color]?.[number] || 0;
+            setValue(team)
           })
+          .catch(error => console.error('Error loading team data: ', error))
       }
 
       if (force) {

@@ -67,7 +67,7 @@
                   "type": "number",
                   "required": true,
                   "code": "matchNumber",
-                  "formResetBehavior": "reset",
+                  "formResetBehavior": "increment",
                   "defaultValue": 1
                 },
                 {
