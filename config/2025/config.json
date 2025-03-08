@@ -87,7 +87,7 @@
                 "type": "select",
                 "required": true,
                 "code": "robot",
-                "formResetBehavior": "reset",
+                "formResetBehavior": "preserve",
                 "defaultValue": "R1",
                 "choices": {
                   "R1": "Red 1",
@@ -104,7 +104,7 @@
                   "type": "text",
                   "required": true,
                   "code": "scouter",
-                  "formResetBehavior": "reset",
+                  "formResetBehavior": "preserve",
                   "defaultValue": ""
               }
           ]
