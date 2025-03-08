@@ -80,9 +80,17 @@ export default function NumberInput(props: ConfigurableInputProps) {
       switch (data.formResetBehavior) {
         case 'reset':
           setValue(data.defaultValue);
+          if (props.code === "matchNumber") {
+            window.dispatchEvent(new CustomEvent('matchNumUpdate', {detail: {match: data.defaultValue}}))
+            console.log("weeee")
+          }
           return;
         case 'increment':
           setValue(prev => (typeof prev === 'number' ? prev + 1 : 1));
+          if (props.code === "matchNumber") {
+            window.dispatchEvent(new CustomEvent('matchNumUpdate', {detail: {match: prev + 1}}))
+            console.log("weeee")
+          }
           return;
         case 'preserve':
           return;
