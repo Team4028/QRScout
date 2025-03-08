@@ -62,16 +62,6 @@
           "name": "Prematch",
           "fields": [
               {
-                  "title": "Event Id",
-                  "description": "TBA Id of the event loaded",
-                  "type": "text",
-                  "required": false,
-                  "code": "TBAeventID",
-                  "disabled": true,
-                  "formResetBehavior": "preserve",
-                  "defaultValue": ""
-              },
-              {
                   "title": "Match Number",
                   "description": "Enter the match number.",
                   "type": "number",
@@ -79,7 +69,18 @@
                   "code": "matchNumber",
                   "formResetBehavior": "reset",
                   "defaultValue": 1
-              },
+                },
+                {
+                    "title": "Team Number",
+                    "description": "The team number of the robot you're scouting.",
+                    "type": "number",
+                    "required": true,
+                    "code": "teamNumber",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 0,
+                    "min": 0,
+                    "max": 19999
+                },
               {
                 "title": "Robot",
                 "description": "The robot you are scouting this match, based on driver station position.",
@@ -96,18 +97,7 @@
                   "B2": "Blue 2",
                   "B3": "Blue 3"
                 }
-              },
-              {
-                  "title": "Team Number",
-                  "description": "The team number of the robot you're scouting.",
-                  "type": "number",
-                  "required": true,
-                  "code": "teamNumber",
-                  "formResetBehavior": "reset",
-                  "defaultValue": 0,
-                  "min": 0,
-                  "max": 19999
-              },
+            },
               {
                   "title": "Scouter Initials",
                   "description": "Enter the initials of the scouter.",
