@@ -63,7 +63,7 @@
             "fields": [
                 {
                     "title": "Match Number",
-                    "description": "Enter the match number.",
+                    "description": "The qualification match number",
                     "type": "number",
                     "required": true,
                     "code": "matchNumber",
@@ -72,7 +72,7 @@
                 },
                 {
                     "title": "Team Number",
-                    "description": "The team number of the robot you're scouting.",
+                    "description": "The team number of the robot you're scouting",
                     "type": "number",
                     "required": true,
                     "code": "teamNumber",
@@ -83,7 +83,7 @@
                 },
                 {
                     "title": "Robot",
-                    "description": "The robot you are scouting this match, based on driver station position.",
+                    "description": "The robot you are scouting this match, based on the order on ther screen",
                     "type": "select",
                     "required": true,
                     "code": "robot",
@@ -100,7 +100,7 @@
                 },
                 {
                     "title": "Scouter Initials",
-                    "description": "Enter the initials of the scouter.",
+                    "description": "Enter the initials of the scouter (be consistent)",
                     "type": "text",
                     "required": true,
                     "code": "scouter",
@@ -114,6 +114,7 @@
             "fields": [
                 {
                     "title": "Moved?",
+                    "description": "Did the robot's bumpers fully clear the start line (forwards or backwards)",
                     "type": "select",
                     "required": true,
                     "code": "Moved",
@@ -126,7 +127,7 @@
                 },
                 {
                     "title": "Coral L1 Scored",
-                    "description": "The number of level 1 coral scored during autonomous.",
+                    "description": "The number of level 1 (trough) coral scored during autonomous",
                     "type": "counter",
                     "required": false,
                     "code": "CLOA",
@@ -137,7 +138,7 @@
                 },
                 {
                     "title": "Coral L2 Scored",
-                    "description": "The number of level 2 coral scored during autonomous.",
+                    "description": "The number of level 2 (lower diagonal branch) coral scored during autonomous",
                     "type": "counter",
                     "required": false,
                     "code": "CLTA",
@@ -148,7 +149,7 @@
                 },
                 {
                     "title": "Coral L3 Scored",
-                    "description": "The number of level 3 coral scored during autonomous.",
+                    "description": "The number of level 3 (upper diagonal branch) coral scored during autonomous",
                     "type": "counter",
                     "required": false,
                     "code": "CLThA",
@@ -159,7 +160,7 @@
                 },
                 {
                     "title": "Coral L4 Scored",
-                    "description": "The number of level 4 coral scored during autonomous.",
+                    "description": "The number of level 4 (vertical branch) coral scored during autonomous",
                     "type": "counter",
                     "required": false,
                     "code": "CLFA",
@@ -175,7 +176,7 @@
             "fields": [
                 {
                     "title": "Coral L1 Scored",
-                    "description": "The number of level 1 coral scored during autonomous.",
+                    "description": "The number of level 1 (trough) coral scored during teleoperated",
                     "type": "counter",
                     "required": false,
                     "code": "CLOT",
@@ -186,7 +187,7 @@
                 },
                 {
                     "title": "Coral L2 Scored",
-                    "description": "The number of level 2 coral scored during autonomous.",
+                    "description": "The number of level 2 (lower diagonal branch) coral scored during teleoperated",
                     "type": "counter",
                     "required": false,
                     "code": "CLTT",
@@ -197,7 +198,7 @@
                 },
                 {
                     "title": "Coral L3 Scored",
-                    "description": "The number of level 3 coral scored during autonomous.",
+                    "description": "The number of level 3 (upper diagonal branch) coral scored during teleoperated",
                     "type": "counter",
                     "required": false,
                     "code": "CLThT",
@@ -208,7 +209,7 @@
                 },
                 {
                     "title": "Coral L4 Scored",
-                    "description": "The number of level 4 coral scored during autonomous.",
+                    "description": "The number of level 4 (vertical branch) coral scored during teleoperated",
                     "type": "counter",
                     "required": false,
                     "code": "CLFT",
@@ -219,6 +220,7 @@
                 },
                 {
                     "title": "Dislodged Algae?",
+                    "description": "Did the robot remove an algae (not necessarily score) from the reef?",
                     "type": "counter",
                     "required": false,
                     "code": "daT",
@@ -229,7 +231,7 @@
                 },
                 {
                     "title": "Barge Algae Scored",
-                    "description": "The number of Algae scored in the barge during autonomous.",
+                    "description": "The number of Algae scored in the barge BY THE ROBOT during teleoperated",
                     "type": "counter",
                     "required": false,
                     "code": "BAST",
@@ -240,7 +242,7 @@
                 },
                 {
                     "title": "Processor Algae Scored",
-                    "description": "The number of Algae scored in the processor during autonomous.",
+                    "description": "The number of Algae scored in the processor during teleoperated",
                     "type": "counter",
                     "required": false,
                     "code": "PAST",
@@ -256,6 +258,7 @@
             "fields": [
                 {
                     "title": "Park?",
+                    "description": "Were they in the barge zone at the end of the match?",
                     "type": "select",
                     "required": true,
                     "code": "prk",
@@ -268,6 +271,7 @@
                 },
                 {
                     "title": "Shallow Climb?",
+                    "description": "Did they climb on the high cage?",
                     "type": "select",
                     "required": true,
                     "code": "Sc",
@@ -280,6 +284,7 @@
                 },
                 {
                     "title": "Deep Climb?",
+                    "description": "Did they climb on the low cage?",
                     "type": "select",
                     "required": true,
                     "code": "Dc",
@@ -297,6 +302,7 @@
             "fields": [
                 {
                     "title": "Disabled?",
+                    "description": "Did the team lose control of their robot during the match?",
                     "type": "select",
                     "required": true,
                     "code": "dis",
@@ -309,6 +315,7 @@
                 },
                 {
                     "title": "Beached?",
+                    "description": "Did they become stuck on top of an algae?",
                     "type": "select",
                     "required": true,
                     "code": "beached",
@@ -320,7 +327,36 @@
                     }
                 },
                 {
+                    "title": "Sturdiness/Robustness?",
+                    "description": "How physically solid are they? How much do their mechanisms wobble? Did anythging break?",
+                    "type": "select",
+                    "required": true,
+                    "code": "robust",
+                    "formResetBehavior": "reset",
+                    "defaultValue": "1",
+                    "choices": {
+                        "0": "Poor",
+                        "1": "Average",
+                        "2": "Good"
+                    }
+                },
+                {
+                    "title": "Drive Team Skill?",
+                    "description": "The degree to which the drive team make good decisions and do all the right inputs?",
+                    "type": "select",
+                    "required": true,
+                    "code": "driveTeam",
+                    "formResetBehavior": "reset",
+                    "defaultValue": "1",
+                    "choices": {
+                        "0": "Poor",
+                        "1": "Average",
+                        "2": "Good"
+                    }
+                },
+                {
                     "title": "Played Defense?",
+                    "description": "Did the robot intentionally obstruct the cycle path of opposing offensive robots?",
                     "type": "select",
                     "required": true,
                     "code": "def",
@@ -333,6 +369,7 @@
                 },
                 {
                     "title": "Defense Rating",
+                    "description": "How effective was their defense? 10 = completely stopped a robot from cycling, 0 = didn't really block anyone; Would you want this robot on your alliance as a defense bot?",
                     "type": "range",
                     "required": true,
                     "code": "defPWR",
@@ -341,7 +378,24 @@
                     "defaultValue": -1
                 },
                 {
+                    "title": "Overall Robot Grade?",
+                    "description": "The overall performance of the robot, as a grade",
+                    "type": "select",
+                    "required": true,
+                    "code": "overallRobot",
+                    "formResetBehavior": "reset",
+                    "defaultValue": "2",
+                    "choices": {
+                        "0": "F",
+                        "1": "D",
+                        "2": "C",
+                        "3": "B",
+                        "4": "A"
+                    }
+                },
+                {
                     "title": "Comments",
+                    "description": "Any other important match information?",
                     "type": "text",
                     "required": false,
                     "code": "co",
