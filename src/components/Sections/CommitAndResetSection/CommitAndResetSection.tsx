@@ -19,7 +19,7 @@ export function CommitAndResetSection() {
   const missingRequiredFields = useMemo(() => {
     return fieldValues
       .filter(f => requiredFields.includes(f.code))
-      .some(f => f.value === undefined || f.value === '' || f.value === null);
+      .some(f => f.value === undefined || f.value === '' || f.value === "'" || f.value === null);
   }, [formData, fieldValues]);
 
   return (

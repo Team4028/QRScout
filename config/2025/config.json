@@ -405,6 +405,20 @@
                     "max": 1000
                 }
             ]
+        },
+        {
+            "name": "Event Data",
+            "fields": [
+                {
+                    "title": "Event ID",
+                    "code": "TBAeventID",
+                    "type": "text",
+                    "required": true,
+                    "disabled": true,
+                    "formResetBehavior": "reset",
+                    "defaultValue" :""
+                }
+            ]
         }
     ]
 }

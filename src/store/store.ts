@@ -68,7 +68,7 @@ export function updateValue(code: string, data: any) {
     produce((state: QRScoutState) => {
       const field = state.fieldValues.find(f => f.code === code);
       if (field) {
-        field.value = data;
+        field.value = state.formData.sections.map(s => s.fields).flat().filter(g => g.code === field.code).at(0)?.type === "text" ? "'" + data : data;
       }
     }),
   );
