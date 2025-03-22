@@ -50,7 +50,10 @@ export default function SelectInput(props: ConfigurableInputProps) {
   const handleSelect = useCallback((value: string) => {
     setValue(value);
     if (props.code === "robot")
-      window.dispatchEvent(new CustomEvent('robotColorNumUpdate', {detail: {cNum: value}}))
+      window.dispatchEvent(new CustomEvent('robotColorNumUpdate', { detail: { cNum: value } }))
+
+    else if (props.code == "def")
+      window.dispatchEvent(new CustomEvent('defynUpdated', { detail: { defyn: value } }));
     // TODO support multiselect again
     // if (!data.multiSelect) {
     //   data.onChange(value);

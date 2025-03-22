@@ -126,7 +126,6 @@ export default function NumberInput(props: ConfigurableInputProps) {
       setValue(parsed);
       if (props.code === "matchNumber") {
         window.dispatchEvent(new CustomEvent('matchNumUpdate', { detail: { match: parsed } }))
-        console.log("weeee")
       }
       e.preventDefault();
     },

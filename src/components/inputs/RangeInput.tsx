@@ -1,6 +1,6 @@
 import { useEvent } from '@/hooks';
 import { inputSelector, updateValue, useQRScoutState } from '@/store/store';
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Slider } from '../ui/slider';
 import { RangeInputData } from './BaseInputProps';
 import { ConfigurableInputProps } from './ConfigurableInput';
@@ -15,6 +15,27 @@ export default function RangeInput(props: ConfigurableInputProps) {
   }
 
   const [value, setValue] = useState(data.defaultValue);
+  const [defyn, setDefynValue] = React.useState<string | null>("0");
+
+  useEffect(() => {
+    if (props.code === "defPWR" && defyn !== null) {
+      if (defyn == "0") setValue(-1);
+      else setValue(5);
+    }
+  }, [props.code, defyn]);
+
+  useEffect(() => {
+    const handleDefynUpdate = (event: CustomEvent<{ defyn: string }>) => {
+      console.log("defyn updated to " + event.detail.defyn);
+      setDefynValue(event.detail.defyn);
+    }
+
+    window.addEventListener('defynUpdated', handleDefynUpdate as EventListener);
+
+    return () => {
+      window.removeEventListener('defynUpdated', handleDefynUpdate as EventListener);
+    }
+  });
 
   const resetState = useCallback(
     ({ force }: { force: boolean }) => {
@@ -22,6 +43,7 @@ export default function RangeInput(props: ConfigurableInputProps) {
         setValue(data.defaultValue);
         return;
       }
+
       switch (data.formResetBehavior) {
         case 'reset':
           setValue(data.defaultValue);
@@ -41,8 +63,9 @@ export default function RangeInput(props: ConfigurableInputProps) {
   useEvent('resetFields', resetState);
 
   const handleChange = useCallback((value: number[]) => {
-    setValue(value[0]);
-  }, []);
+    if (props.code !== "defPWR" || defyn !== "0")
+      setValue(value[0]);
+  }, [props.code, defyn]);
 
   useEffect(() => {
     updateValue(props.code, value);
