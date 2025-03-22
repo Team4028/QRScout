@@ -34,12 +34,12 @@ export default function NumberInput(props: ConfigurableInputProps) {
   }, [props.code, matchNumber, robotColorNum]);
 
   useEffect(() => {
-    const handleMatchUpdate = (event: CustomEvent<{match: number}>) => {
+    const handleMatchUpdate = (event: CustomEvent<{ match: number }>) => {
       console.log("match updated to " + event.detail.match);
       setMatchNumber(event.detail.match)
     };
 
-    const handleRobotColorNumUpdate = (event: CustomEvent<{cNum: string}>) => {
+    const handleRobotColorNumUpdate = (event: CustomEvent<{ cNum: string }>) => {
       console.log("rcnum updated to " + event.detail.cNum);
       setRobotColorNum(event.detail.cNum);
     };
@@ -60,6 +60,12 @@ export default function NumberInput(props: ConfigurableInputProps) {
         `force: ${force}`,
         `behavior: ${data.formResetBehavior}`,
       );
+
+      if (force) {
+        setValue(data.defaultValue);
+        return;
+      }
+
       if (props.code === "teamNumber" && matchNumber !== null && robotColorNum !== null) {
         fetch('./teams.json')
           .then(response => response.json())
@@ -73,21 +79,17 @@ export default function NumberInput(props: ConfigurableInputProps) {
           .catch(error => console.error('Error loading team data: ', error))
       }
 
-      if (force) {
-        setValue(data.defaultValue);
-        return;
-      }
       switch (data.formResetBehavior) {
         case 'reset':
           setValue(data.defaultValue);
           if (props.code === "matchNumber") {
-            window.dispatchEvent(new CustomEvent('matchNumUpdate', {detail: {match: data.defaultValue}}))
+            window.dispatchEvent(new CustomEvent('matchNumUpdate', { detail: { match: data.defaultValue } }))
           }
           return;
         case 'increment':
           setValue(prev => (typeof prev === 'number' ? prev + 1 : 1));
           if (props.code === "matchNumber") {
-            window.dispatchEvent(new CustomEvent('matchNumUpdate', {detail: {match: value}}))
+            window.dispatchEvent(new CustomEvent('matchNumUpdate', { detail: { match: Number(value) + 1 } }))
           }
           return;
         case 'preserve':
@@ -123,7 +125,7 @@ export default function NumberInput(props: ConfigurableInputProps) {
       }
       setValue(parsed);
       if (props.code === "matchNumber") {
-        window.dispatchEvent(new CustomEvent('matchNumUpdate', {detail: {match: parsed}}))
+        window.dispatchEvent(new CustomEvent('matchNumUpdate', { detail: { match: parsed } }))
         console.log("weeee")
       }
       e.preventDefault();

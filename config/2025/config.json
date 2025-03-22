@@ -38,7 +38,7 @@
             "popover": "0 0% 3.9%",
             "popover_foreground": "0 0% 98%",
             "primary": "270 100% 37%",
-            "primary_foreground": "0 85.7% 97.3%",
+            "primary_foreground": "0 87.5% 97.3%",
             "secondary": "0 0% 14.9%",
             "secondary_foreground": "0 0% 98%",
             "muted": "0 0% 14.9%",
@@ -67,7 +67,7 @@
                     "type": "number",
                     "required": true,
                     "code": "matchNumber",
-                    "formResetBehavior": "preserve",
+                    "formResetBehavior": "increment",
                     "defaultValue": 1
                 },
                 {
@@ -255,6 +255,18 @@
             "name": "Endgame",
             "fields": [
                 {
+                    "title": "Park?",
+                    "type": "select",
+                    "required": true,
+                    "code": "prk",
+                    "formResetBehavior": "reset",
+                    "defaultValue": "0",
+                    "choices": {
+                        "0": "No",
+                        "1": "Yes"
+                    }
+                },
+                {
                     "title": "Shallow Climb?",
                     "type": "select",
                     "required": true,
@@ -283,6 +295,30 @@
         {
             "name": "Postmatch",
             "fields": [
+                {
+                    "title": "Disabled?",
+                    "type": "select",
+                    "required": true,
+                    "code": "dis",
+                    "formResetBehavior": "reset",
+                    "defaultValue": "0",
+                    "choices": {
+                        "0": "No",
+                        "1": "Yes"
+                    }
+                },
+                {
+                    "title": "Beached?",
+                    "type": "select",
+                    "required": true,
+                    "code": "beached",
+                    "formResetBehavior": "reset",
+                    "defaultValue": "0",
+                    "choices": {
+                        "0": "No",
+                        "1": "Yes"
+                    }
+                },
                 {
                     "title": "Played Defense?",
                     "type": "select",
