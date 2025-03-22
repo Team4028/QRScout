@@ -168,6 +168,28 @@
                     "defaultValue": 0,
                     "min": 0,
                     "step": 1
+                },
+                {
+                    "title": "Processor Algae Scored",
+                    "description": "The number of Algae scored in the processor during autonomous",
+                    "type": "counter",
+                    "required": false,
+                    "code": "procAlgAuton",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 0,
+                    "min": 0,
+                    "step": 1
+                },
+                {
+                    "title": "Barge Algae Scored",
+                    "description": "The number of Algae scored in the barge BY THE ROBOT during autonomous",
+                    "type": "counter",
+                    "required": false,
+                    "code": "bargeAlgAuton",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 0,
+                    "min": 0,
+                    "step": 1
                 }
             ]
         },
