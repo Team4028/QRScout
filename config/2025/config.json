@@ -435,7 +435,7 @@
                     "title": "Event ID",
                     "code": "TBAeventID",
                     "type": "text",
-                    "required": true,
+                    "required": false,
                     "disabled": true,
                     "formResetBehavior": "reset",
                     "defaultValue" :""
