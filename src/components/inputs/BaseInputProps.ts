@@ -194,6 +194,7 @@ export const configSchema = z.object({
     },
   }),
   sections: z.array(sectionSchema),
+  uploadURL: z.string().describe('Base URL to upload form data to.')
 });
 
 export type InputTypes = z.infer<typeof inputTypeSchema>;
