@@ -1,4 +1,4 @@
-import { Cloud, Copy, Loader2, LoaderCircle, LoaderPinwheel, QrCode } from 'lucide-react';
+import { Cloud, Copy, Loader2, QrCode } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import { useMemo } from 'react';
 import { getFieldValue, useQRScoutState } from '../../store/store';
@@ -88,22 +88,26 @@ export function QRModal(props: QRModalProps) {
                             if (!(await is_logged.json())["logged_in"]) {
                                 const un = prompt("Enter username:")
                                 const pw = prompt("Enter password:")
-                                const login = await fetch(new URL("login", formData.uploadURL).toString(), {
-                                    method: 'POST',
-                                    credentials: 'include',
-                                    headers: {
-                                        "X-CSRFToken": k,
-                                        "Content-Type": "application/json"
-                                    },
-                                    body: JSON.stringify({
-                                        username: un,
-                                        password: await sha256(pw)
-                                    })
-                                });
+                                if (un && pw) {
+                                    const login = await fetch(new URL("login", formData.uploadURL).toString(), {
+                                        method: 'POST',
+                                        credentials: 'include',
+                                        headers: {
+                                            "X-CSRFToken": k,
+                                            "Content-Type": "application/json"
+                                        },
+                                        body: JSON.stringify({
+                                            username: un,
+                                            password: await sha256(pw)
+                                        })
+                                    });
 
-                                if (!login.ok) {
-                                    alert(`Error logging in: ${await login.text()}`);
-                                    return;
+                                    if (!login.ok) {
+                                        alert(`Error logging in: ${await login.text()}`);
+                                        return;
+                                    }
+                                } else {
+                                    console.log("UN or PW omitted");
                                 }
                             } else console.log("Already logged in");
                         }
