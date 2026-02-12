@@ -1,6 +1,6 @@
 {
   "title": "QRScout",
-  "page_title": "Reefscape",
+  "page_title": "Rebuilt",
   "delimiter": "\t",
   "teamNumber": 4028,
   "theme": {
@@ -71,31 +71,16 @@
           "defaultValue": 1
         },
         {
-          "title": "Team Number",
-          "description": "The team number of the robot you're scouting",
-          "type": "number",
-          "required": true,
-          "code": "teamNumber",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "max": 19999
-        },
-        {
-          "title": "Robot",
-          "description": "The robot you are scouting this match, based on the order on ther screen",
+          "title": "Alliance Color",
+          "description": "The alliance you are scouting this match, based on the order on ther screen",
           "type": "select",
           "required": true,
-          "code": "robot",
+          "code": "allianceColor",
           "formResetBehavior": "preserve",
-          "defaultValue": "R1",
+          "defaultValue": "R",
           "choices": {
-            "R1": "Red 1",
-            "R2": "Red 2",
-            "R3": "Red 3",
-            "B1": "Blue 1",
-            "B2": "Blue 2",
-            "B3": "Blue 3"
+            "R": "Red",
+            "B": "Blue"
           }
         },
         {
@@ -110,213 +95,110 @@
       ]
     },
     {
-      "name": "Autonomous",
+      "name": "Team 1",
       "fields": [
         {
-          "title": "Went for Neutral Zone",
-          "description": "Whether the robot attempted to acquire fuel from the Neutral Zone during auton",
-          "type": "boolean",
-          "required": false,
-          "code": "aNZ",
-          "formResetBehavior": "reset",
-          "defaultValue": false
-        },
-        {
-          "title": "Time Spent Scoring",
-          "description": "The amount of fuel scored in the HUB",
-          "type": "timer",
-          "required": false,
-          "code": "aFuel",
-          "formResetBehavior": "reset",
-          "defaultValue": 0
-        },
-        {
-          "title": "Misses",
-          "description": "Number of shots to the HUB missed",
-          "type": "counter",
-          "required": false,
-          "code": "aMis",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "step": 1
-        },
-        {
-          "title": "Time Spent Shuttling",
-          "description": "The amount of time spent shooting fuel from outside the Alliance Zone to inside the Alliance Zone",
-          "type": "timer",
-          "required": false,
-          "code": "aShuttle",
-          "formResetBehavior": "reset",
-          "defaultValue": 0
-        },
-        {
-          "title": "Climb",
-          "description": "Whether the robot climbed in autonomous",
-          "type": "boolean",
-          "required": false,
-          "code": "aClimb",
-          "formResetBehavior": "reset",
-          "defaultValue": false
-        }
-      ]
-    },
-    {
-      "name": "Teleop",
-      "fields": [
-        {
-          "title": "Time Spent Scoring",
-          "description": "The amount of fuel scored in the HUB",
-          "type": "timer",
-          "required": false,
-          "code": "tFuel",
-          "formResetBehavior": "reset",
-          "defaultValue": 0
-        },
-        {
-          "title": "Misses",
-          "description": "Number of shots to the HUB missed",
-          "type": "counter",
-          "required": false,
-          "code": "aMis",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "step": 1
-        },
-        {
-          "title": "Time Spent Shuttling",
-          "description": "The amount of time spent shooting fuel from outside the Alliance Zone to inside the Alliance Zone",
-          "type": "timer",
-          "required": false,
-          "code": "tShuttle",
-          "formResetBehavior": "reset",
-          "defaultValue": 0
-        }
-      ]
-    },
-    {
-      "name": "Endgame",
-      "fields": [
-        {
-          "title": "Climb",
-          "description": "Which level the robot climbed on",
-          "type": "select",
-          "required": false,
-          "code": "tClimb",
-          "formResetBehavior": "reset",
-          "defaultValue": "0",
-          "choices": {
-            "0": "None",
-            "1": "L1",
-            "2": "L2",
-            "3": "L3"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Postmatch",
-      "fields": [
-        {
-          "title": "Evaluated Flow Rate",
-          "description": "Special Scouters' calcualted flow rate of the shooter",
-          "type": "number",
-          "required": false,
-          "code": "fr",
-          "formResetBehavior": "reset",
-          "defaultValue": 0
-        },
-        {
-          "title": "Disabled?",
-          "description": "Did the team lose control of their robot during the match?",
-          "type": "select",
-          "required": true,
-          "code": "dis",
-          "formResetBehavior": "reset",
-          "defaultValue": "0",
-          "choices": {
-            "0": "No",
-            "1": "Yes"
-          }
-        },
-        {
-          "title": "Sturdiness/Robustness?",
-          "description": "How physically solid are they? How much do their mechanisms wobble? Did anythging break?",
-          "type": "select",
-          "required": true,
-          "code": "robust",
-          "formResetBehavior": "reset",
-          "defaultValue": "1",
-          "choices": {
-            "0": "Poor",
-            "1": "Average",
-            "2": "Good"
-          }
-        },
-        {
-          "title": "Drive Team Skill?",
-          "description": "The degree to which the drive team make good decisions and do all the right inputs?",
-          "type": "select",
-          "required": true,
-          "code": "driveTeam",
-          "formResetBehavior": "reset",
-          "defaultValue": "1",
-          "choices": {
-            "0": "Poor",
-            "1": "Average",
-            "2": "Good"
-          }
-        },
-        {
-          "title": "Played Defense?",
-          "description": "Did the robot intentionally obstruct the cycle path of opposing offensive robots?",
-          "type": "select",
-          "required": true,
-          "code": "def",
-          "formResetBehavior": "reset",
-          "defaultValue": "0",
-          "choices": {
-            "0": "No",
-            "1": "Yes"
-          }
-        },
-        {
-          "title": "Defense Rating",
-          "description": "How effective was their defense? 10 = completely stopped a robot from cycling, 0 = didn't really block anyone; Would you want this robot on your alliance as a defense bot?",
-          "type": "range",
-          "required": true,
-          "code": "defPWR",
-          "formResetBehavior": "reset",
-          "defaultValue": -1,
-          "min": 0,
-          "max": 10,
-          "step": 1
-        },
-        {
-          "title": "Overall Robot Grade?",
-          "description": "The overall performance of the robot, as a grade",
-          "type": "select",
-          "required": true,
-          "code": "overallRobot",
-          "formResetBehavior": "reset",
-          "defaultValue": "2",
-          "choices": {
-            "0": "F",
-            "1": "D",
-            "2": "C",
-            "3": "B",
-            "4": "A"
-          }
-        },
-        {
-          "title": "Comments",
-          "description": "Any other important match information?",
+          "title": "Team Number",
           "type": "text",
           "required": false,
-          "code": "co",
+          "code": "team1",
+          "disabled": true,
           "formResetBehavior": "reset",
-          "defaultValue": "",
-          "min": 0,
-          "max": 1000
+          "defaultValue": ""
+        },
+        {
+          "title": "Hopper Capacity",
+          "type": "range",
+          "required": true,
+          "code": "t1Hop",
+          "formResetBehavior": "reset",
+          "defaultValue": 1,
+          "step": 1,
+          "min": 1,
+          "max": 3
+        },
+        {
+          "title": "Driver Skill Rank",
+          "type": "range",
+          "required": true,
+          "code": "t1Drive",
+          "formResetBehavior": "reset",
+          "defaultValue": 1,
+          "step": 1,
+          "min": 1,
+          "max": 3
+        }
+      ]
+    },
+    {
+      "name": "Team 2",
+      "fields": [
+        {
+          "title": "Team Number",
+          "type": "text",
+          "required": false,
+          "code": "team2",
+          "disabled": true,
+          "formResetBehavior": "reset",
+          "defaultValue": ""
+        },
+        {
+          "title": "Hopper Capacity",
+          "type": "range",
+          "required": true,
+          "code": "t2Hop",
+          "formResetBehavior": "reset",
+          "defaultValue": 2,
+          "step": 1,
+          "min": 1,
+          "max": 3
+        },
+        {
+          "title": "Driver Skill Rank",
+          "type": "range",
+          "required": true,
+          "code": "t2Drive",
+          "formResetBehavior": "reset",
+          "defaultValue": 2,
+          "step": 1,
+          "min": 1,
+          "max": 3
+        }
+      ]
+    },
+    {
+      "name": "Team 3",
+      "fields": [
+        {
+          "title": "Team Number",
+          "type": "text",
+          "required": false,
+          "code": "team3",
+          "disabled": true,
+          "formResetBehavior": "reset",
+          "defaultValue": ""
+        },
+        {
+          "title": "Hopper Capacity",
+          "type": "range",
+          "required": true,
+          "code": "t3Hop",
+          "formResetBehavior": "reset",
+          "defaultValue": 3,
+          "step": 1,
+          "min": 1,
+          "max": 3
+        },
+        {
+          "title": "Driver Skill Rank",
+          "type": "range",
+          "required": true,
+          "code": "t3Drive",
+          "formResetBehavior": "reset",
+          "defaultValue": 3,
+          "step": 1,
+          "min": 1,
+          "max": 3
         }
       ]
     },

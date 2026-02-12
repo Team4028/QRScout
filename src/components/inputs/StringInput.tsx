@@ -42,6 +42,26 @@ export default function StringInput(props: ConfigurableInputProps) {
       .then(json => setValue(json["event_id"]));
   }, [value]);
 
+  useEffect(() => {
+    if (["team1", "team2", "team3"].includes(props.code)) {
+        const handleGetTeamNumber = (event: CustomEvent<{t1: number, t2: number, t3: number}>) => {
+            switch (props.code) {
+                case "team1":
+                    setValue(event.detail.t1.toString());
+                    break;
+                case "team2":
+                    setValue(event.detail.t2.toString());
+                    break;
+                case "team3":
+                    setValue(event.detail.t3.toString());
+                    break;
+            }
+        };
+
+        window.addEventListener("allianceTeamLoad", handleGetTeamNumber as EventListener);
+    }
+  }, []);
+
   useEvent('resetFields', resetState);
 
   useEffect(() => {
