@@ -1,5 +1,5 @@
 import { useEvent } from '@/hooks';
-import { inputSelector, updateValue, useQRScoutState } from '@/store/store';
+import { getConfig, inputSelector, updateValue, useQRScoutState } from '@/store/store';
 import { useCallback, useEffect, useState } from 'react';
 import { Slider } from '../ui/slider';
 import { RangeInputData } from './BaseInputProps';
@@ -16,6 +16,8 @@ export default function RangeInput(props: ConfigurableInputProps) {
 
     const [value, setValue] = useState(data.defaultValue);
 
+    const idx = getConfig().sections[1].fields.findIndex(f => f.code.slice(2) == data.code.slice(2)) - 1;
+
     const resetState = useCallback(
         ({ force }: { force: boolean }) => {
             if (force) {
@@ -26,10 +28,10 @@ export default function RangeInput(props: ConfigurableInputProps) {
             switch (data.formResetBehavior) {
                 case 'reset':
                     setValue(data.defaultValue);
-                    window.dispatchEvent(new CustomEvent("changeRankNum", { detail: { i: 0, j: (parseInt(props.code.charAt(1)) - 1), data: data.defaultValue.toString() } }));
+                    window.dispatchEvent(new CustomEvent("changeRankNum", { detail: { i: idx, j: (parseInt(props.code.charAt(1)) - 1), data: data.defaultValue.toString() } }));
                     return;
                 case 'increment':
-                    window.dispatchEvent(new CustomEvent("changeRankNum", { detail: { i: 0, j: (parseInt(props.code.charAt(1)) - 1), data: (typeof value === 'number' ? value + data.step : 1).toString() } }));
+                    window.dispatchEvent(new CustomEvent("changeRankNum", { detail: { i: idx, j: (parseInt(props.code.charAt(1)) - 1), data: (typeof value === 'number' ? value + data.step : 1).toString() } }));
                     setValue(prev => (typeof prev === 'number' ? prev + data.step : 1));
                     return;
                 case 'preserve':
@@ -45,11 +47,7 @@ export default function RangeInput(props: ConfigurableInputProps) {
 
     const handleChange = useCallback((value: number[]) => {
         setValue(value[0]);
-        if (props.code.toLowerCase().includes("hop")) {
-            window.dispatchEvent(new CustomEvent("changeRankNum", { detail: { i: 0, j: (parseInt(props.code.charAt(1)) - 1), data: value[0].toString() } }));
-        } else if (props.code.toLowerCase().includes("drive")) {
-            window.dispatchEvent(new CustomEvent("changeRankNum", { detail: { i: 1, j: (parseInt(props.code.charAt(1)) - 1), data: value[0].toString() } }));
-        }
+        window.dispatchEvent(new CustomEvent("changeRankNum", { detail: { i: idx, j: (parseInt(props.code.charAt(1)) - 1), data: value[0].toString() } }));
     }, []);
 
     useEffect(() => {

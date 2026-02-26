@@ -1,221 +1,320 @@
 {
-  "title": "QRScout",
-  "page_title": "Rebuilt",
-  "delimiter": "\t",
-  "teamNumber": 4028,
-  "theme": {
-    "light": {
-      "background": "0 0% 100%",
-      "foreground": "0 0% 3.9%",
-      "card": "0 0% 100%",
-      "card_foreground": "0 0% 3.9%",
-      "popover": "0 0% 100%",
-      "popover_foreground": "0 0% 3.9%",
-      "primary": "270 100% 37%",
-      "primary_foreground": "0 85.7% 97.3%",
-      "secondary": "0 0% 96.1%",
-      "secondary_foreground": "0 0% 9%",
-      "muted": "0 0% 96.1%",
-      "muted_foreground": "0 0% 45.1%",
-      "accent": "0 0% 96.1%",
-      "accent_foreground": "0 0% 9%",
-      "destructive": "0 84.2% 60.2%",
-      "destructive_foreground": "0 0% 98%",
-      "border": "0 0% 89.8%",
-      "input": "0 0% 89.8%",
-      "ring": "270 100% 37%",
-      "chart_1": "270 100% 37%",
-      "chart_2": "270 100% 37%",
-      "chart_3": "270 100% 37%",
-      "chart_4": "270 100% 37%",
-      "chart_5": "270 100% 37%"
-    },
-    "dark": {
-      "background": "0 0% 3.9%",
-      "foreground": "0 0% 98%",
-      "card": "0 0% 3.9%",
-      "card_foreground": "0 0% 98%",
-      "popover": "0 0% 3.9%",
-      "popover_foreground": "0 0% 98%",
-      "primary": "270 100% 37%",
-      "primary_foreground": "0 87.5% 97.3%",
-      "secondary": "0 0% 14.9%",
-      "secondary_foreground": "0 0% 98%",
-      "muted": "0 0% 14.9%",
-      "muted_foreground": "0 0% 63.9%",
-      "accent": "0 0% 14.9%",
-      "accent_foreground": "0 0% 98%",
-      "destructive": "0 62.8% 30.6%",
-      "destructive_foreground": "0 0% 98%",
-      "border": "0 0% 14.9%",
-      "input": "0 0% 14.9%",
-      "ring": "270 100% 37%",
-      "chart_1": "270 100% 37%",
-      "chart_2": "270 100% 37%",
-      "chart_3": "270 100% 37%",
-      "chart_4": "270 100% 37%",
-      "chart_5": "270 100% 37%"
-    }
-  },
-  "sections": [
-    {
-      "name": "Prematch",
-      "fields": [
-        {
-          "title": "Match Number",
-          "description": "The qualification match number",
-          "type": "number",
-          "required": true,
-          "code": "matchNumber",
-          "formResetBehavior": "increment",
-          "defaultValue": 1
+    "title": "QRScout",
+    "page_title": "Rebuilt",
+    "delimiter": "\t",
+    "teamNumber": 4028,
+    "theme": {
+        "light": {
+            "background": "0 0% 100%",
+            "foreground": "0 0% 3.9%",
+            "card": "0 0% 100%",
+            "card_foreground": "0 0% 3.9%",
+            "popover": "0 0% 100%",
+            "popover_foreground": "0 0% 3.9%",
+            "primary": "270 100% 37%",
+            "primary_foreground": "0 85.7% 97.3%",
+            "secondary": "0 0% 96.1%",
+            "secondary_foreground": "0 0% 9%",
+            "muted": "0 0% 96.1%",
+            "muted_foreground": "0 0% 45.1%",
+            "accent": "0 0% 96.1%",
+            "accent_foreground": "0 0% 9%",
+            "destructive": "0 84.2% 60.2%",
+            "destructive_foreground": "0 0% 98%",
+            "border": "0 0% 89.8%",
+            "input": "0 0% 89.8%",
+            "ring": "270 100% 37%",
+            "chart_1": "270 100% 37%",
+            "chart_2": "270 100% 37%",
+            "chart_3": "270 100% 37%",
+            "chart_4": "270 100% 37%",
+            "chart_5": "270 100% 37%"
         },
-        {
-          "title": "Alliance Color",
-          "description": "The alliance you are scouting this match, based on the order on ther screen",
-          "type": "select",
-          "required": true,
-          "code": "allianceColor",
-          "formResetBehavior": "preserve",
-          "defaultValue": "R",
-          "choices": {
-            "R": "Red",
-            "B": "Blue"
-          }
-        },
-        {
-          "title": "Scouter Initials",
-          "description": "Enter the initials of the scouter (be consistent)",
-          "type": "text",
-          "required": true,
-          "code": "scouter",
-          "formResetBehavior": "preserve",
-          "defaultValue": ""
+        "dark": {
+            "background": "0 0% 3.9%",
+            "foreground": "0 0% 98%",
+            "card": "0 0% 3.9%",
+            "card_foreground": "0 0% 98%",
+            "popover": "0 0% 3.9%",
+            "popover_foreground": "0 0% 98%",
+            "primary": "270 100% 37%",
+            "primary_foreground": "0 87.5% 97.3%",
+            "secondary": "0 0% 14.9%",
+            "secondary_foreground": "0 0% 98%",
+            "muted": "0 0% 14.9%",
+            "muted_foreground": "0 0% 63.9%",
+            "accent": "0 0% 14.9%",
+            "accent_foreground": "0 0% 98%",
+            "destructive": "0 62.8% 30.6%",
+            "destructive_foreground": "0 0% 98%",
+            "border": "0 0% 14.9%",
+            "input": "0 0% 14.9%",
+            "ring": "270 100% 37%",
+            "chart_1": "270 100% 37%",
+            "chart_2": "270 100% 37%",
+            "chart_3": "270 100% 37%",
+            "chart_4": "270 100% 37%",
+            "chart_5": "270 100% 37%"
         }
-      ]
     },
-    {
-      "name": "Team 1",
-      "fields": [
+    "sections": [
         {
-          "title": "Team Number",
-          "type": "text",
-          "required": false,
-          "code": "team1",
-          "disabled": true,
-          "formResetBehavior": "reset",
-          "defaultValue": ""
+            "name": "Prematch",
+            "fields": [
+                {
+                    "title": "Match Number",
+                    "description": "The qualification match number",
+                    "type": "number",
+                    "required": true,
+                    "code": "matchNumber",
+                    "formResetBehavior": "increment",
+                    "defaultValue": 1
+                },
+                {
+                    "title": "Alliance Color",
+                    "description": "The alliance you are scouting this match, based on the order on ther screen",
+                    "type": "select",
+                    "required": true,
+                    "code": "allianceColor",
+                    "formResetBehavior": "preserve",
+                    "defaultValue": "R",
+                    "choices": {
+                        "R": "Red",
+                        "B": "Blue"
+                    }
+                },
+                {
+                    "title": "Scouter Initials",
+                    "description": "Enter the initials of the scouter (be consistent)",
+                    "type": "text",
+                    "required": true,
+                    "code": "scouter",
+                    "formResetBehavior": "preserve",
+                    "defaultValue": ""
+                }
+            ]
         },
         {
-          "title": "Hopper Capacity",
-          "type": "range",
-          "required": true,
-          "code": "t1Hop",
-          "formResetBehavior": "reset",
-          "defaultValue": 1,
-          "step": 1,
-          "min": 1,
-          "max": 3
+            "name": "Team 1",
+            "fields": [
+                {
+                    "title": "Team Number",
+                    "type": "text",
+                    "required": false,
+                    "code": "team1",
+                    "disabled": true,
+                    "formResetBehavior": "reset",
+                    "defaultValue": ""
+                },
+                {
+                    "title": "Speed",
+                    "type": "range",
+                    "required": true,
+                    "code": "t1Speed",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 1,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                },
+                {
+                    "title": "Accuracy",
+                    "type": "range",
+                    "required": true,
+                    "code": "t1Accuracy",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 1,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                },
+                {
+                    "title": "Driver Skill Rank",
+                    "type": "range",
+                    "required": true,
+                    "code": "t1Drive",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 1,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                },
+                {
+                    "title": "Defense",
+                    "type": "range",
+                    "required": true,
+                    "code": "t1Defense",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 1,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                },
+                {
+                    "title": "Hopper Capacity",
+                    "type": "range",
+                    "required": true,
+                    "code": "t1Hop",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 1,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                }
+            ]
         },
         {
-          "title": "Driver Skill Rank",
-          "type": "range",
-          "required": true,
-          "code": "t1Drive",
-          "formResetBehavior": "reset",
-          "defaultValue": 1,
-          "step": 1,
-          "min": 1,
-          "max": 3
+            "name": "Team 2",
+            "fields": [
+                {
+                    "title": "Team Number",
+                    "type": "text",
+                    "required": false,
+                    "code": "team2",
+                    "disabled": true,
+                    "formResetBehavior": "reset",
+                    "defaultValue": ""
+                },
+                {
+                    "title": "Speed",
+                    "type": "range",
+                    "required": true,
+                    "code": "t2Speed",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 2,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                },
+                {
+                    "title": "Accuracy",
+                    "type": "range",
+                    "required": true,
+                    "code": "t2Accuracy",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 2,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                },
+                {
+                    "title": "Driver Skill Rank",
+                    "type": "range",
+                    "required": true,
+                    "code": "t2Drive",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 2,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                },
+                {
+                    "title": "Defense",
+                    "type": "range",
+                    "required": true,
+                    "code": "t2Defense",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 2,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                },
+                {
+                    "title": "Hopper Capacity",
+                    "type": "range",
+                    "required": true,
+                    "code": "t2Hop",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 2,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                }
+            ]
+        },
+        {
+            "name": "Team 3",
+            "fields": [
+                {
+                    "title": "Team Number",
+                    "type": "text",
+                    "required": false,
+                    "code": "team3",
+                    "disabled": true,
+                    "formResetBehavior": "reset",
+                    "defaultValue": ""
+                },
+                {
+                    "title": "Speed",
+                    "type": "range",
+                    "required": true,
+                    "code": "t3Speed",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 3,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                },
+                {
+                    "title": "Accuracy",
+                    "type": "range",
+                    "required": true,
+                    "code": "t3Accuracy",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 3,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                },
+                {
+                    "title": "Driver Skill Rank",
+                    "type": "range",
+                    "required": true,
+                    "code": "t3Drive",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 3,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                },
+                {
+                    "title": "Defense",
+                    "type": "range",
+                    "required": true,
+                    "code": "t3Defense",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 3,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                },
+                {
+                    "title": "Hopper Capacity",
+                    "type": "range",
+                    "required": true,
+                    "code": "t3Hop",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 3,
+                    "step": 1,
+                    "min": 1,
+                    "max": 3
+                }
+            ]
+        },
+        {
+            "name": "Event Data",
+            "fields": [
+                {
+                    "title": "Event ID",
+                    "type": "text",
+                    "required": false,
+                    "code": "TBAeventID",
+                    "disabled": true,
+                    "formResetBehavior": "reset",
+                    "defaultValue": ""
+                }
+            ]
         }
-      ]
-    },
-    {
-      "name": "Team 2",
-      "fields": [
-        {
-          "title": "Team Number",
-          "type": "text",
-          "required": false,
-          "code": "team2",
-          "disabled": true,
-          "formResetBehavior": "reset",
-          "defaultValue": ""
-        },
-        {
-          "title": "Hopper Capacity",
-          "type": "range",
-          "required": true,
-          "code": "t2Hop",
-          "formResetBehavior": "reset",
-          "defaultValue": 2,
-          "step": 1,
-          "min": 1,
-          "max": 3
-        },
-        {
-          "title": "Driver Skill Rank",
-          "type": "range",
-          "required": true,
-          "code": "t2Drive",
-          "formResetBehavior": "reset",
-          "defaultValue": 2,
-          "step": 1,
-          "min": 1,
-          "max": 3
-        }
-      ]
-    },
-    {
-      "name": "Team 3",
-      "fields": [
-        {
-          "title": "Team Number",
-          "type": "text",
-          "required": false,
-          "code": "team3",
-          "disabled": true,
-          "formResetBehavior": "reset",
-          "defaultValue": ""
-        },
-        {
-          "title": "Hopper Capacity",
-          "type": "range",
-          "required": true,
-          "code": "t3Hop",
-          "formResetBehavior": "reset",
-          "defaultValue": 3,
-          "step": 1,
-          "min": 1,
-          "max": 3
-        },
-        {
-          "title": "Driver Skill Rank",
-          "type": "range",
-          "required": true,
-          "code": "t3Drive",
-          "formResetBehavior": "reset",
-          "defaultValue": 3,
-          "step": 1,
-          "min": 1,
-          "max": 3
-        }
-      ]
-    },
-    {
-      "name": "Event Data",
-      "fields": [
-        {
-          "title": "Event ID",
-          "type": "text",
-          "required": false,
-          "code": "TBAeventID",
-          "disabled": true,
-          "formResetBehavior": "reset",
-          "defaultValue": ""
-        }
-      ]
-    }
-  ],
-  "uploadURL": "http://localhost:5000"
+    ],
+    "uploadURL": "http://localhost:5000"
 }

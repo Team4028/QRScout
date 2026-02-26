@@ -6,7 +6,7 @@ import { ResetButton } from './ResetButton';
 
 export function CommitAndResetSection() {
 
-    const [ranks, setRanks] = React.useState<Array<Array<string>>>([['1', '2', '3'], ['1', '2', '3']]);
+    const [ranks, setRanks] = React.useState<Array<Array<string>>>([['1', '2', '3'], ['1', '2', '3'], ['1', '2', '3'], ['1', '2', '3'], ['1', '2', '3']]);
     const [ranksValid, setRanksValid] = React.useState<boolean>(true);
 
     useEffect(() => {
