@@ -65,52 +65,40 @@ export function QRModal(props: QRModalProps) {
                 try {
                     uploadInProgress = true;
                     let urlIsValid = false;
-                    let k;
                     try {
                         const r = await fetch(new URL("health", formData.uploadURL).toString());
                         if (r.ok) {
                             const t = await r.text();
                             urlIsValid = t.trim().includes("Sentinel is watching");
                         }
-                        const getCSRF = await fetch(new URL("csrf", formData.uploadURL).toString(), {
-                            method: "GET",
-                            credentials: 'include'
+                        // check login
+                        const is_logged = await fetch(new URL("我是谁", formData.uploadURL).toString(), {
+                            credentials: 'include',
                         });
-                        if (getCSRF.ok) {
-                            k = (await getCSRF.json())["csrf"];
-                            // check login
-                            const is_logged = await fetch(new URL("我是谁", formData.uploadURL).toString(), {
-                                credentials: 'include',
-                                headers: {
-                                    "X-CSRFToken": k,
-                                }
-                            });
-                            if (!(await is_logged.json())["logged_in"]) {
-                                const un = prompt("Enter username:")
-                                const pw = prompt("Enter password:")
-                                if (un && pw) {
-                                    const login = await fetch(new URL("login", formData.uploadURL).toString(), {
-                                        method: 'POST',
-                                        credentials: 'include',
-                                        headers: {
-                                            "X-CSRFToken": k,
-                                            "Content-Type": "application/json"
-                                        },
-                                        body: JSON.stringify({
-                                            username: un,
-                                            password: await sha256(pw)
-                                        })
-                                    });
+                        if (!(await is_logged.json())["logged_in"]) {
+                            const un = prompt("Enter username:")
+                            const pw = prompt("Enter password:")
+                            if (un && pw) {
+                                const login = await fetch(new URL("login", formData.uploadURL).toString(), {
+                                    method: 'POST',
+                                    credentials: 'include',
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+                                    body: JSON.stringify({
+                                        username: un,
+                                        password: await sha256(pw)
+                                    })
+                                });
 
-                                    if (!login.ok) {
-                                        alert(`Error logging in: ${await login.text()}`);
-                                        return;
-                                    }
-                                } else {
-                                    console.log("UN or PW omitted");
+                                if (!login.ok) {
+                                    alert(`Error logging in: ${await login.text()}`);
+                                    return;
                                 }
-                            } else console.log("Already logged in");
-                        }
+                            } else {
+                                console.log("UN or PW omitted");
+                            }
+                        } else console.log("Already logged in");
                     } catch (e) { if (!urlIsValid) alert("The URL you are trying to upload to is invalid or inactive."); else alert(`Error: ${e}`); return; }
                     if (!urlIsValid) {
                         alert("The URL you are trying to upload to is invalid or inactive.");
@@ -123,7 +111,6 @@ export function QRModal(props: QRModalProps) {
                     await fetch(new URL("append", formData.uploadURL).toString(), {
                         method: 'POST',
                         credentials: 'include',
-                        headers: { 'X-CSRFToken': k },
                         body: fData,
                     });
 
