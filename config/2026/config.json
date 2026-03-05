@@ -334,8 +334,7 @@
                     "required": false,
                     "code": "TBAeventID",
                     "disabled": true,
-                    "formResetBehavior": "reset",
-                    "defaultValue": ""
+                    "formResetBehavior": "preserve"
                 }
             ]
         }
