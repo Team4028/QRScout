@@ -151,6 +151,14 @@
                     "max": 3
                 },
                 {
+                    "title": "Played Defense?",
+                    "type": "boolean",
+                    "required": true,
+                    "code": "t1PD",
+                    "formResetBehavior": "reset",
+                    "defaultValue": true
+                },
+                {
                     "title": "Hopper Capacity",
                     "type": "range",
                     "required": true,
@@ -220,6 +228,14 @@
                     "max": 3
                 },
                 {
+                    "title": "Played Defense?",
+                    "type": "boolean",
+                    "required": true,
+                    "code": "t2PD",
+                    "formResetBehavior": "reset",
+                    "defaultValue": true
+                },
+                {
                     "title": "Hopper Capacity",
                     "type": "range",
                     "required": true,
@@ -287,6 +303,14 @@
                     "step": 1,
                     "min": 1,
                     "max": 3
+                },
+                {
+                    "title": "Played Defense?",
+                    "type": "boolean",
+                    "required": true,
+                    "code": "t3PD",
+                    "formResetBehavior": "reset",
+                    "defaultValue": true
                 },
                 {
                     "title": "Hopper Capacity",
