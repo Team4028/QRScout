@@ -103,8 +103,7 @@
                     "required": false,
                     "code": "team1",
                     "disabled": true,
-                    "formResetBehavior": "reset",
-                    "defaultValue": ""
+                    "formResetBehavior": "reset"
                 },
                 {
                     "title": "Speed",
@@ -180,8 +179,7 @@
                     "required": false,
                     "code": "team2",
                     "disabled": true,
-                    "formResetBehavior": "reset",
-                    "defaultValue": ""
+                    "formResetBehavior": "reset"
                 },
                 {
                     "title": "Speed",
@@ -257,8 +255,7 @@
                     "required": false,
                     "code": "team3",
                     "disabled": true,
-                    "formResetBehavior": "reset",
-                    "defaultValue": ""
+                    "formResetBehavior": "reset"
                 },
                 {
                     "title": "Speed",
