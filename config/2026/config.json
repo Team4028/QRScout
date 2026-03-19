@@ -178,6 +178,13 @@
                     "code": "t1PD",
                     "formResetBehavior": "reset",
                     "defaultValue": true
+                },
+                {
+                    "title": "Vibe Lemons",
+                    "type": "number",
+                    "required": true,
+                    "code": "t1VL",
+                    "defaultValue": 0
                 }
             ]
         },
@@ -265,6 +272,13 @@
                     "code": "t2PD",
                     "formResetBehavior": "reset",
                     "defaultValue": true
+                },
+                {
+                    "title": "Vibe Lemons",
+                    "type": "number",
+                    "required": true,
+                    "code": "t2VL",
+                    "defaultValue": 0
                 }
             ]
         },
@@ -352,6 +366,13 @@
                     "code": "t3PD",
                     "formResetBehavior": "reset",
                     "defaultValue": true
+                },
+                {
+                    "title": "Vibe Lemons",
+                    "type": "number",
+                    "required": true,
+                    "code": "t3VL",
+                    "defaultValue": 0
                 }
             ]
         },
