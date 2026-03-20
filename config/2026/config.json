@@ -180,7 +180,7 @@
                     "defaultValue": true
                 },
                 {
-                    "title": "Vibe Lemons",
+                    "title": "Vibe Lemons Percent",
                     "type": "number",
                     "required": true,
                     "code": "t1VL",
@@ -274,7 +274,7 @@
                     "defaultValue": true
                 },
                 {
-                    "title": "Vibe Lemons",
+                    "title": "Vibe Lemons Percent",
                     "type": "number",
                     "required": true,
                     "code": "t2VL",
@@ -368,11 +368,34 @@
                     "defaultValue": true
                 },
                 {
-                    "title": "Vibe Lemons",
+                    "title": "Vibe Lemons Percent",
                     "type": "number",
                     "required": true,
                     "code": "t3VL",
                     "defaultValue": 0
+                }
+            ]
+        },
+        {
+            "name": "Postmatch",
+            "fields": [
+                {
+                    "title": "Auton Alliance Balls",
+                    "type": "number",
+                    "required": true,
+                    "code": "autoBallsAlli",
+                    "description": "Look at scoreboard",
+                    "disabled": false,
+                    "formResetBehavior": "reset"
+                },
+                {
+                    "title": "Tele Alliance Balls",
+                    "type": "number",
+                    "required": true,
+                    "code": "teleBallsAlli",
+                    "description": "Look at scoreboard",
+                    "disabled": false,
+                    "formResetBehavior": "reset"
                 }
             ]
         },
