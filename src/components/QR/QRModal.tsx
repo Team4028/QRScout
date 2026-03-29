@@ -4,72 +4,76 @@ import { useMemo } from 'react';
 import { getFieldValue, useQRScoutState } from '../../store/store';
 import { Button } from '../ui/button';
 import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogTitle,
-  DialogTrigger,
+    Dialog,
+    DialogContent,
+    DialogFooter,
+    DialogTitle,
+    DialogTrigger,
 } from '../ui/dialog';
 import { PreviewText } from './PreviewText';
 
+function cleanQRString(input: string): string {
+    return input.replace(/[^\p{L}\p{N}\s-]/gu, "").replace("\n", " ").replace("\t", "    ").replace("false", "0").replace("true", "1");
+}
+
 /** Serialize a field value for QR code or display; TBA-team-and-robot is stored as an object. */
 function fieldValueToQrString(value: unknown): string {
-  if (value != null && typeof value === 'object' && 'teamNumber' in value) {
-    const { teamNumber } = value as { teamNumber: number };
-    return String(teamNumber);
-  }
-  if (value === null || value === undefined) return '';
-  return String(value);
+    if (value != null && typeof value === 'object' && 'teamNumber' in value) {
+        const { teamNumber } = value as { teamNumber: number };
+        return cleanQRString(String(teamNumber));
+    }
+    if (value === null || value === undefined) return '';
+    return cleanQRString(String(value));
 }
 
 export interface QRModalProps {
-  disabled?: boolean;
+    disabled?: boolean;
 }
 
 export function QRModal(props: QRModalProps) {
-  const fieldValues = useQRScoutState(state => state.fieldValues);
-  const formData = useQRScoutState(state => state.formData);
-  const robotValue = getFieldValue('robot');
-  const title = `${fieldValueToQrString(robotValue)} - M${getFieldValue(
-    'matchNumber',
-  )}`.toUpperCase();
+    const fieldValues = useQRScoutState(state => state.fieldValues);
+    const formData = useQRScoutState(state => state.formData);
+    const robotValue = getFieldValue('robot');
+    const title = `${fieldValueToQrString(robotValue)} - M${getFieldValue(
+        'matchNumber',
+    )}`.toUpperCase();
 
-  const qrCodeData = useMemo(
-    () =>
-      fieldValues
-        .map(f => fieldValueToQrString(f.value))
-        .join(formData.delimiter),
-    [fieldValues, formData.delimiter],
-  );
-  //Two seperate values are required- qrCodePreview is what is shown to the user beneath the QR code, qrCodeData is the actual data.
+    const qrCodeData = useMemo(
+        () =>
+            fieldValues
+                .map(f => fieldValueToQrString(f.value))
+                .join(formData.delimiter),
+        [fieldValues, formData.delimiter],
+    );
+    //Two seperate values are required- qrCodePreview is what is shown to the user beneath the QR code, qrCodeData is the actual data.
 
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button disabled={props.disabled}>
-          <QrCode className="size-5" />
-          Commit
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="h-[95%]">
-        <DialogTitle className="text-3xl text-primary text-center font-rhr-ns tracking-wider ">
-          {title}
-        </DialogTitle>
-        <div className="flex flex-col items-center gap-6 overflow-y-scroll">
-          <div className="bg-white p-4 rounded-md">
-            <QRCodeSVG className="m-2 mt-4" size={256} value={qrCodeData} />
-          </div>
-          <PreviewText data={qrCodeData} />
-        </div>
-        <DialogFooter>
-          <Button
-            variant="ghost"
-            onClick={() => navigator.clipboard.writeText(qrCodeData)}
-          >
-            <Copy className="size-4" /> Copy Data
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  );
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <Button disabled={props.disabled}>
+                    <QrCode className="size-5" />
+                    Commit
+                </Button>
+            </DialogTrigger>
+            <DialogContent className="h-[95%]">
+                <DialogTitle className="text-3xl text-primary text-center font-rhr-ns tracking-wider ">
+                    {title}
+                </DialogTitle>
+                <div className="flex flex-col items-center gap-6 overflow-y-scroll">
+                    <div className="bg-white p-4 rounded-md">
+                        <QRCodeSVG className="m-2 mt-4" size={256} value={qrCodeData} />
+                    </div>
+                    <PreviewText data={qrCodeData} />
+                </div>
+                <DialogFooter>
+                    <Button
+                        variant="ghost"
+                        onClick={() => navigator.clipboard.writeText(qrCodeData)}
+                    >
+                        <Copy className="size-4" /> Copy Data
+                    </Button>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+    );
 }

@@ -12,6 +12,8 @@ import TimerInput from './TimerInput';
 import MultiSelectInput from './MultiSelectInput';
 import TBATeamAndRobotInput from './TBATeamAndRobotInput';
 import TBAMatchNumberInput from './TBAMatchNumberInput';
+import ButtonSelectInput from './ButtonSelect';
+import TBAEventKeyInput from './TBAEventKeyInput';
 export interface ConfigurableInputProps {
   section: string;
   code: string;
@@ -24,6 +26,8 @@ export default function ConfigurableInput(props: ConfigurableInputProps) {
       return <StringInput {...props} key={props.code} />;
     case 'image':
       return <ImageInput {...props} key={props.code} />;
+    case 'button-select':
+      return <ButtonSelectInput {...props} key={props.code} />; 
     case 'select':
       return <SelectInput {...props} key={props.code} />;
     case 'number':
@@ -46,5 +50,7 @@ export default function ConfigurableInput(props: ConfigurableInputProps) {
       return <TBATeamAndRobotInput {...props} key={props.code} />;
     case 'TBA-match-number':
       return <TBAMatchNumberInput {...props} key={props.code} />;
+    case 'TBA-event-key':
+      return <TBAEventKeyInput {...props} key={props.code} />;
   }
 }

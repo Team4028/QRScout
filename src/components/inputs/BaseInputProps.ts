@@ -7,6 +7,7 @@ export const inputTypeSchema = z
     'boolean',
     'range',
     'select',
+    'button-select',
     'counter',
     'multi-counter',
     'timer',
@@ -15,6 +16,7 @@ export const inputTypeSchema = z
     'action-tracker',
     'TBA-team-and-robot',
     'TBA-match-number',
+    'TBA-event-key',
   ])
   .describe('The type of input');
 
@@ -30,6 +32,7 @@ export const inputBaseSchema = z.object({
     .default('reset')
     .describe('The behavior of this input when the form is reset'),
   defaultValue: z.unknown().describe('The default value'),
+  mutualWith: z.array(z.string()).optional().describe('Other fields (by code) which this field can not equal')
 });
 
 export const stringInputSchema = inputBaseSchema.extend({
@@ -48,6 +51,15 @@ export const numberInputSchema = inputBaseSchema.extend({
 
 export const selectInputSchema = inputBaseSchema.extend({
   type: z.literal('select'),
+  choices: z.record(z.string()).optional().describe('The choices'),
+  defaultValue: z
+    .string()
+    .default('')
+    .describe('The default value. Must be one of the choices'),
+});
+
+export const buttonSelectInputSchema = inputBaseSchema.extend({
+  type: z.literal('button-select'),
   choices: z.record(z.string()).optional().describe('The choices'),
   defaultValue: z
     .string()
@@ -169,6 +181,10 @@ export const tbaMatchNumberInputSchema = inputBaseSchema.extend({
   defaultValue: z.number().default(0).describe('The default value'),
 });
 
+export const tbaEventKeyInputSchema = inputBaseSchema.extend({
+    type: z.literal("TBA-event-key")
+});
+
 export const sectionSchema = z.object({
   name: z.string(),
   fields: z.array(
@@ -178,6 +194,7 @@ export const sectionSchema = z.object({
       stringInputSchema,
       numberInputSchema,
       selectInputSchema,
+      buttonSelectInputSchema,
       multiSelectInputSchema,
       rangeInputSchema,
       booleanInputSchema,
@@ -186,6 +203,7 @@ export const sectionSchema = z.object({
       actionTrackerInputSchema,
       tbaTeamAndRobotInputSchema,
       tbaMatchNumberInputSchema,
+      tbaEventKeyInputSchema,
     ]),
   ),
 });
@@ -333,6 +351,7 @@ export type InputTypes = z.infer<typeof inputTypeSchema>;
 
 export type InputBase = z.infer<typeof inputBaseSchema>;
 export type SelectInputData = z.infer<typeof selectInputSchema>;
+export type ButtonSelectInputData = z.infer<typeof buttonSelectInputSchema>;
 export type MultiSelectInputData = z.infer<typeof multiSelectInputSchema>;
 export type StringInputData = z.infer<typeof stringInputSchema>;
 export type NumberInputData = z.infer<typeof numberInputSchema>;
@@ -349,12 +368,15 @@ export type TBATeamAndRobotInputData = z.infer<
 >;
 export type TBAMatchNumberInputData = z.infer<typeof tbaMatchNumberInputSchema>;
 
+export type TBAEventKeyInputData = z.infer<typeof tbaEventKeyInputSchema>;
+
 export type InputPropsMap = {
   text: StringInputData;
   number: NumberInputData;
   boolean: BooleanInputData;
   range: RangeInputData;
   select: SelectInputData;
+  'button-select': ButtonSelectInputData;
   'multi-select': MultiSelectInputData;
   counter: CounterInputData;
   'multi-counter': MultiCounterInputData;
@@ -363,6 +385,7 @@ export type InputPropsMap = {
   'action-tracker': ActionTrackerInputData;
   'TBA-team-and-robot': TBATeamAndRobotInputData;
   'TBA-match-number': TBAMatchNumberInputData;
+  'TBA-event-key': TBAEventKeyInputData;
 };
 
 export type SectionProps = z.infer<typeof sectionSchema>;

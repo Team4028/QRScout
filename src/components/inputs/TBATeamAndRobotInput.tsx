@@ -31,6 +31,7 @@ export default function TBATeamAndRobotInput(props: ConfigurableInputProps) {
     const value = getFieldValue('matchNumber');
     return typeof value === 'number' ? value : null;
   });
+
   // See !108. Some teams may want to assign scouts to a specific driver station
   // (e.g. Red 1, Red 2, Red 3, Blue 1, Blue 2, Blue 3) across matches. To save time
   // and reduce errors, we can automatically select the team and robot position based
@@ -44,8 +45,8 @@ export default function TBATeamAndRobotInput(props: ConfigurableInputProps) {
   // This is an optional feature that can be used by teams who want it, and it will
   // eventually graduate into explicit config.
   const driverStation = useQRScoutState(() => {
-    return getFieldValue("driverStation");
-  })
+    return getFieldValue("alliance");
+  }) + (data?.code.slice(-1)); // assume last char of code is num (ie. Team 1)
 
   if (!data) {
     return <div>Invalid input</div>;
@@ -113,7 +114,7 @@ export default function TBATeamAndRobotInput(props: ConfigurableInputProps) {
         setValue({
           teamNumber,
           robotPosition: driverStation,
-        })
+        });
       }
     }
   }, [teamOptions, selectedMatchNumber, driverStation])

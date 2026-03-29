@@ -284,6 +284,14 @@
                       "type": "number",
                       "description": "The step value",
                       "default": 1
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
@@ -323,6 +331,14 @@
                       "type": "number",
                       "default": 0,
                       "description": "The default value"
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
@@ -370,6 +386,14 @@
                     "max": {
                       "type": "number",
                       "description": "The maximum length of the string"
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
@@ -417,6 +441,14 @@
                     "max": {
                       "type": "number",
                       "description": "The maximum value"
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
@@ -463,6 +495,68 @@
                         "type": "string"
                       },
                       "description": "The choices"
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "type",
+                    "required",
+                    "code"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "$ref": "#/properties/sections/items/properties/fields/items/anyOf/0/properties/title"
+                    },
+                    "description": {
+                      "$ref": "#/properties/sections/items/properties/fields/items/anyOf/0/properties/description"
+                    },
+                    "type": {
+                      "type": "string",
+                      "const": "button-select"
+                    },
+                    "required": {
+                      "$ref": "#/properties/sections/items/properties/fields/items/anyOf/0/properties/required"
+                    },
+                    "code": {
+                      "$ref": "#/properties/sections/items/properties/fields/items/anyOf/0/properties/code"
+                    },
+                    "disabled": {
+                      "$ref": "#/properties/sections/items/properties/fields/items/anyOf/0/properties/disabled"
+                    },
+                    "formResetBehavior": {
+                      "$ref": "#/properties/sections/items/properties/fields/items/anyOf/0/properties/formResetBehavior"
+                    },
+                    "defaultValue": {
+                      "type": "string",
+                      "default": "",
+                      "description": "The default value. Must be one of the choices"
+                    },
+                    "choices": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "The choices"
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
@@ -511,6 +605,14 @@
                         "type": "string"
                       },
                       "description": "The choices"
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
@@ -563,6 +665,14 @@
                       "type": "number",
                       "description": "The step value",
                       "default": 1
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
@@ -602,6 +712,14 @@
                       "type": "boolean",
                       "default": false,
                       "description": "The default value"
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
@@ -650,6 +768,14 @@
                       ],
                       "default": "average",
                       "description": "The type of output to display in the scouting form"
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
@@ -701,6 +827,14 @@
                     "alt": {
                       "type": "string",
                       "description": "The alt text for the image"
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
@@ -784,6 +918,14 @@
                     "autoStopSeconds": {
                       "type": "number",
                       "description": "Automatically stop the timer after this many seconds. Useful to prevent the timer from running past the match phase duration."
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
@@ -844,6 +986,14 @@
                       ],
                       "default": null,
                       "description": "The default team and robot position"
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
@@ -891,6 +1041,61 @@
                     "max": {
                       "type": "number",
                       "description": "The maximum value"
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "type",
+                    "required",
+                    "code"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "$ref": "#/properties/sections/items/properties/fields/items/anyOf/0/properties/title"
+                    },
+                    "description": {
+                      "$ref": "#/properties/sections/items/properties/fields/items/anyOf/0/properties/description"
+                    },
+                    "type": {
+                      "type": "string",
+                      "const": "TBA-event-key"
+                    },
+                    "required": {
+                      "$ref": "#/properties/sections/items/properties/fields/items/anyOf/0/properties/required"
+                    },
+                    "code": {
+                      "$ref": "#/properties/sections/items/properties/fields/items/anyOf/0/properties/code"
+                    },
+                    "disabled": {
+                      "$ref": "#/properties/sections/items/properties/fields/items/anyOf/0/properties/disabled"
+                    },
+                    "formResetBehavior": {
+                      "$ref": "#/properties/sections/items/properties/fields/items/anyOf/0/properties/formResetBehavior"
+                    },
+                    "defaultValue": {
+                      "type": "string",
+                      "default": "",
+                      "description": "The default value"
+                    },
+                    "mutualWith": {
+                        "type": "array",
+                        "default": null,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of codes of other fields that this one can not have the same value as"
                     }
                   },
                   "required": [
