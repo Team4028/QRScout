@@ -197,6 +197,14 @@
                     "defaultValue": false
                 },
                 {
+                    "title": "Infeed Broke?",
+                    "type": "boolean",
+                    "required": true,
+                    "code": "t1IB",
+                    "formResetBehavior": "reset",
+                    "defaultValue": false
+                },
+                {
                     "title": "Vibe Lemons Percent",
                     "type": "number",
                     "required": true,
@@ -306,6 +314,14 @@
                     "defaultValue": false
                 },
                 {
+                    "title": "Infeed Broke?",
+                    "type": "boolean",
+                    "required": true,
+                    "code": "t2IB",
+                    "formResetBehavior": "reset",
+                    "defaultValue": false
+                },
+                {
                     "title": "Vibe Lemons Percent",
                     "type": "number",
                     "required": true,
@@ -406,6 +422,14 @@
                     "type": "boolean",
                     "required": true,
                     "code": "t3PD",
+                    "formResetBehavior": "reset",
+                    "defaultValue": false
+                },
+                {
+                    "title": "Infeed Broke?",
+                    "type": "boolean",
+                    "required": true,
+                    "code": "t3IB",
                     "formResetBehavior": "reset",
                     "defaultValue": false
                 },
