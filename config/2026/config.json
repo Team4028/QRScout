@@ -81,6 +81,7 @@
                     "code": "alliance",
                     "required": true,
                     "defaultValue": "R",
+                    "formResetBehavior": "preserve",
                     "choices": {
                         "R": "R",
                         "B": "B"
