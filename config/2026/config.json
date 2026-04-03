@@ -299,7 +299,7 @@
                     "title": "Defense Skill",
                     "type": "range",
                     "required": true,
-                    "code": "t3Defense",
+                    "code": "t2Defense",
                     "formResetBehavior": "reset",
                     "defaultValue": 5,
                     "step": 1,
@@ -310,7 +310,7 @@
                     "title": "Played Defense?",
                     "type": "boolean",
                     "required": true,
-                    "code": "t3PD",
+                    "code": "t2PD",
                     "formResetBehavior": "reset",
                     "defaultValue": false
                 },
@@ -326,7 +326,7 @@
                     "title": "Vibe Lemons Percent",
                     "type": "number",
                     "required": true,
-                    "code": "t3VL",
+                    "code": "t2VL",
                     "defaultValue": 0
                 }
             ]
